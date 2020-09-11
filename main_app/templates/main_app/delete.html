@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h3>You Have Deleted The Following Item</h3>
+    <li>Description: {{ task.description }}</li>
+    <li>Time: {{ task.time }} minutes</li>
+    <li>Person: {{ task.person}}</li>
+    <br>
+    <a href="{% url 'index' %}">Go Back To Tasks</a>
+  </body>
+</html>

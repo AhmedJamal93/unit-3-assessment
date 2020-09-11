@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Tedious Tasks</title>
+  </head>
+  <body>
+    <h1>Tedious Tasks</h1>
+    {% if tasks|length == 0 %}
+      <h3>No Tasks Exist</h3>
+    {% else %}
+    <ul>
+      Description || Time || Person
+      {% for task in tasks %}
+        <li>{{ task.description }} || {{task.time}} minutes || {{task.person}} ||
+          <form action="{% url 'delete' task.id %}" method="POST">
+            {% csrf_token %}
+            <input type="submit" name="" value="X">
+          </form>
+        </li>
+      {% endfor %}
+      <li>Total Time : {{ time_sum }} minutes</li>
+    </ul>
+
+    {% endif %}
+    <hr>
+    <h4>Add Task</h4>
+    <form action="{% url 'index' %}" method="POST">
+      {% csrf_token %}
+      {{ form.as_p }}
+
+      <input type="submit" name="" value="Add Task">
+    </form>
+
+  </body>
+</html>
